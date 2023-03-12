@@ -1,0 +1,41 @@
+use("platzi_store")
+db.products.drop()
+
+db.products.insertMany([{
+    _id : 1,
+    name: "ducha",
+    price: 540
+},
+{
+    _id : 2,
+    name: "horno",
+    price: 1200,
+    color: "black"
+},
+{
+    _id : 3,
+    name: "nevera",
+    price: 980
+},
+{
+    _id : 4,
+    name: "plancha",
+    price: 120
+},
+{
+    name: "Laptop",
+    price: 350,
+    currency: 'USD'
+}
+])
+
+db.products.updateOne(
+    {
+        _id:2},
+    {
+        $set: {
+          name: "horno magico"
+        }
+    }
+)
+

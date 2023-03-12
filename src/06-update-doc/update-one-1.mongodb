@@ -1,0 +1,32 @@
+use("platzi_store")
+
+db.products.updateOne(
+    // query
+    {
+        name:"nevera"
+    },
+    {
+        /**
+         * field: The field name
+         * expression: The expression.
+         */
+        $set: {
+          name: "nevera magica",
+          price: 1234
+        }
+    }
+)
+
+db.products.updateOne(
+    {
+        name:"ducha"
+    },
+    {
+        $set: {
+          name: "ducha magica",
+          price: 56789,
+          tags: ['A', 'B', 'C'],
+        }
+    }
+)
+

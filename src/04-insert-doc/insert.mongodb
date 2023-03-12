@@ -1,0 +1,12 @@
+use("platzi_store")
+db.products.insertOne({
+    name: "Licuadora",
+    price: 1100
+})
+
+db.products.insertOne({
+    name: "Microondas",
+    price: 360
+})
+
+db.products.find().count()
