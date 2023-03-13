@@ -1,0 +1,16 @@
+use("platzi_store")
+db.inventory.find().count()
+
+db.inventory.updateOne(
+    {
+        _id: 4
+    },
+    {
+
+        $push: {
+          tags: "headphone"
+        }
+    }
+)
+
+db.inventory.find({_id:4})

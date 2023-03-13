@@ -1,0 +1,52 @@
+use("sample_training")
+
+db.zips.updateMany(
+    {
+        city:"CLEVELAND" 
+    },
+
+    {
+        $inc: {
+          pop: 1000
+        }
+    }
+)
+
+db.zips.updateMany(
+    {
+        city:"CLEVELAND"
+    },
+
+    {
+        $set: {
+          myAtributo: "hola"
+        }
+    }
+)
+
+
+db.zips.updateMany(
+    {
+        city:"CLEVELAND"
+    },
+
+    {
+        $set: {
+          myAtributo: "hola"
+        }
+    }
+)
+
+
+db.zips.updateMany(
+    {
+        city:"CLEVELAND"
+    },
+
+    {
+        $rename: {
+          myAtributo: "my_data"
+        }
+    }
+)
+

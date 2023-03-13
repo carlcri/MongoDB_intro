@@ -1,0 +1,9 @@
+use("platzi_store")
+
+db.products.deleteOne( {_id: 1} )
+
+
+use("platzi_store")
+db.products.deleteMany(
+    { price: 100}
+)
