@@ -1,0 +1,37 @@
+use("platzi_store")
+db.inventory.find( {qty: 20} )
+
+
+use("platzi_store")
+db.inventory.find( {qty: { $eq:20 }} )
+
+
+use("platzi_store")
+db.inventory.find(
+    { "item.code": "123"  }
+)
+
+
+use("platzi_store")
+db.inventory.find(
+    { "item.code": { $eq:"123"} }
+)
+
+
+use("platzi_store")
+db.inventory.find( {qty: { $ne:20 }} )
+
+
+use("platzi_store")
+db.inventory.updateMany(
+    {qty : { $ne: 20}},
+    { $inc: { qty:3}}
+)
+
+use("platzi_store")
+db.inventory.updateMany(
+    { "item.name": {$ne: "ij"}},
+    {
+        $push: { tags: "z"}
+    }
+)

@@ -1,0 +1,23 @@
+use("platzi_store")
+db.inventory.find( { qty: { $gt: 20} } )
+
+use("platzi_store")
+db.inventory.find( { qty: { $gte: 20} } )
+
+
+use("platzi_store")
+db.inventory.find( { qty: { $lt: 20} } )
+
+
+use("platzi_store")
+db.inventory.find( { qty: { $lte: 20} } )
+
+
+use("platzi_store")
+db.inventory.find( { qty: { $gte: 25, $lte: 35} } )
+
+use("platzi_store")
+db.inventory.find( 
+    { qty: { $gte: 50},
+    "item.code": { $ne: "090" } }
+)

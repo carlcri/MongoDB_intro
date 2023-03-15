@@ -1,0 +1,22 @@
+use("platzi_store")
+
+db.iot.updateMany(
+    { sensor: { $eq: "A001"} },
+    { 
+    $pull: {
+      readings: { $gt: 2, $lte: 5 }
+    }}
+)
+
+
+use("platzi_store")
+db.iot.find({ sensor: { $eq: "A001"} })
+
+
+use("sample_training")
+db.trips.find().count()
+
+
+use("sample_training")
+db.trips.find( 
+    { tripduration: { $lte: 200 }, usertype: { $eq: "Subscriber"} } ).count()
