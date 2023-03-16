@@ -1,0 +1,30 @@
+use("platzi_store")
+db.inventory.find({"item.code": "000"})
+
+
+use("platzi_store")
+db.inventory.find({"item.code": { $ne: "000"}})
+
+
+use("platzi_store")
+db.inventory.find({ "item.description": { $regex: /line/ } })
+
+
+use("platzi_store")
+db.inventory.find({ "item.description": { $regex: /line/i } })
+
+
+use("platzi_store")
+db.inventory.find({ "item.description": { $regex: /line$/i } })
+
+
+use("platzi_store")
+db.inventory.find({ "item.description": { $regex: /^single/i } })
+
+
+use("platzi_store")
+db.inventory.find({ "item.description": { $regex: /^s/i } })
+
+
+use("platzi_store")
+db.inventory.find({ "item.description": { $regex: /^s/im } })
