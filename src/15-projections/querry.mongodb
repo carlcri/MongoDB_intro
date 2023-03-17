@@ -1,0 +1,15 @@
+    use("sample_training")
+    
+    db.trips.find( 
+        { tripduration: { $gte: 190, $lte: 200 }, usertype: { $eq: "Subscriber"} } ).count()
+
+
+    use("sample_training")
+    db.trips.find(
+        // querry
+        { tripduration: { $gte: 190, $lte: 200 }, usertype: { $eq: "Subscriber"} },
+
+        //projection
+        { tripduration: 1}
+    )
+

@@ -1,0 +1,21 @@
+use("platzi_store")
+
+db.survey.find({
+    "results.product": { $in: ["xyz"]}
+})
+
+
+use("platzi_store")
+db.survey.find({
+    results: { $elemMatch: { product : "xyz" }}
+})
+
+use("platzi_store")
+db.survey.find({
+    results: { $elemMatch: { product : "xyz", score: 7 }}
+})
+
+use("platzi_store")
+db.survey.find({
+    results: { $elemMatch: { product : "xyz", score: { $lte: 7} }}
+})

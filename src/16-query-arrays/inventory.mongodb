@@ -1,0 +1,30 @@
+use("platzi_store")
+db.inventory.find({}, {tags:1})
+
+use("platzi_store")
+db.inventory.find(
+    { tags: { $in: ["book"] }},
+    { tags:1})
+
+use("platzi_store")
+db.inventory.find(
+    { qty: { $in: [20, 25] }},
+    { qty:1})
+
+
+use("platzi_store")
+db.inventory.find(
+    { tags: { $nin: ["book", "appliance"] }},
+    { tags:1})
+
+
+use("platzi_store")
+db.inventory.find(
+    { tags: { $all: ["book", "bag"] }},
+    { tags:1})
+
+
+use("platzi_store")
+db.inventory.find(
+    { tags: { $size: 2}},
+    { tags:1})

@@ -20,3 +20,4 @@ db.trips.find().count()
 use("sample_training")
 db.trips.find( 
     { tripduration: { $lte: 200 }, usertype: { $eq: "Subscriber"} } ).count()
+
