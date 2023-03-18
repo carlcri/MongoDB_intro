@@ -1,0 +1,78 @@
+use("sample_training")
+db.inspections.find().count()
+
+
+// AND implicito
+use("sample_training")
+db.inspections.find({ 
+    sector: "Tax Preparers - 891",
+    result: "Unable to Locate"}
+).count()
+
+
+// AND explicito
+use("sample_training")
+db.inspections.find({
+    $and: [
+        {sector: "Tax Preparers - 891"},
+        {result: "Unable to Locate"}
+    ]
+}).count()
+
+
+// OR
+use("sample_training")
+db.inspections.find({
+    $or: [
+        {sector: "Tax Preparers - 891"},
+        {result: "Unable to Locate"}
+    ]
+},
+{
+    sector: 1,
+    result:1
+})
+
+
+//NOR
+use("sample_training")
+db.inspections.find({
+    $nor: [
+        {sector: "Tax Preparers - 891"},
+        {result: "Unable to Locate"},
+        {"address.city": "NEW YORK"}
+    ]
+},
+{
+    sector: 1,
+    result:1,
+    "address.city": 1,
+})
+
+use("sample_training")
+db.inspections.find(
+    { result: { $not: { $regex: /Unable to Locate/}}}
+)
+
+use("sample_training")
+db.routes.find(
+    { $or: 
+    [ { src_airport: "BOG"}, 
+      { dst_airport: "BOG"}
+    ]},
+
+    { src_airport: 1,
+      dst_airport: 1}
+).count()
+
+
+use("sample_training")
+db.routes.find(
+    { $and: [
+        { airplane: { $eq: "E70"}},
+        { $or: [ 
+            { src_airport: "BOG"}, 
+            { dst_airport: "BOG"}
+        ]}
+    ]}
+).count()
