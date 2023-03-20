@@ -1,0 +1,77 @@
+use("sample_airbnb")
+db.listingsAndReviews.find().count()
+
+
+use("sample_airbnb")
+db.listingsAndReviews.findOne( {},
+    {amenities: 1})
+
+
+use("sample_airbnb")
+db.listingsAndReviews.find( 
+    { amenities: { $all: ["Wifi"]}
+    },
+
+    {amenities: 1}
+).count()
+
+
+use("sample_airbnb")
+db.listingsAndReviews.aggregate(
+    {
+        { amenities: { $all: ["Wifi"]}
+        },    
+    }
+).count()
+
+// no funciona
+use("sample_airbnb")
+db.listingsAndReviews.aggregate(
+    [
+        {
+           amenities: { $all: ["Wifi"]} 
+        }
+    ]
+)
+
+
+
+use("sample_airbnb")
+db.listingsAndReviews.aggregate(
+    [
+        {
+           $match: {
+             amenities: "Wifi"
+           }
+        },
+        {
+            $project: {
+                price: 1,
+                amenities:1
+            }
+        }
+    ]
+)
+
+
+
+use("sample_airbnb")
+db.listingsAndReviews.aggregate(
+    [
+        {
+           $match: {
+             amenities: "Wifi",
+           }
+        },
+        {
+            $project: {
+                address:1
+            }
+        },
+        {   
+            $group: {
+                _id: "$address.country", count: { $sum: 1}
+            }
+        },
+    ]
+)

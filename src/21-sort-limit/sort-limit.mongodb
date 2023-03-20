@@ -1,0 +1,32 @@
+use("sample_training")
+db.zips.find().count()
+
+use("sample_training")
+db.zips.findOne()
+
+use("sample_training")
+db.zips.find(
+    {
+        pop : {$gte: 100}
+    },
+).count()
+
+
+use("sample_training")
+db.zips.find(
+    {
+        pop : {$gte: 100}
+    },
+).sort({ pop:1 })
+
+
+use("sample_training")
+db.zips.
+find(
+    {
+        pop : {$gte: 100}
+    },
+)
+.sort({ pop:-1 })
+.limit(2)
+
